@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
     const now = new Date();
     const hour = now.getHours();
     const hourDeg = 90 + (30 * (hour % 12));
-    console.log('hourDeg: ', hourDeg);
     h.style.transform = `rotate(${hourDeg}deg)`;
   }
 
@@ -19,9 +18,14 @@ document.addEventListener('DOMContentLoaded', (e) => {
   }
 
   function setSec(s) {
+    s.style.transition = '';
     const now = new Date();
     const sec = now.getSeconds();
     const secDeg = ((sec / 60) * 360) + 90;
+
+    if (sec === 0) {
+      s.style.transition = `all 0.00s`;
+    }
     s.style.transform = `rotate(${secDeg}deg)`;
   }
 
